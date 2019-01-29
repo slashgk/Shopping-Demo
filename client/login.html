@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="js/login.js"></script>
 </head>
 <body>
 
@@ -25,6 +24,20 @@
     <button type="submit" class="btn btn-default" onclick="validate()">Submit</button>
   </form>
 </div>
+<script>
+  function validate(){
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("pwd").value;
+    var url = `localhost:3000/users?username=${username}&password=${password}`;
 
+    fetch(url, {
+                method: 'POST',
+            }).then((res) => res.json())
+    .then((data) =>  console.log(data))
+    .catch((err)=>console.log(err))
+    alert('done');
+}
+
+</script>
 </body>
 </html>

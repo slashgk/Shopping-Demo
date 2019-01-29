@@ -1,5 +1,5 @@
 require('./config/config');
-
+const port = process.env.PORT || 3000;
 const express = require('express');
 const bodyPraser = require('body-parser'); 
 
@@ -7,10 +7,18 @@ var {mongoose} = require('./db/mongoose');
 var {User} = require('./models/user');
 
 var app = express();
-const port = process.env.PORT || 3000;
 
-app.use(bodyPraser.json());
 
+
+app.get('/',(req, res) => {
+    res.sendfile('client/login.html');
+});
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.post('/users', (req, res) => {
     var user = new User({
         username: req.query.username,
