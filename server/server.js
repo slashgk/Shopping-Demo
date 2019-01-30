@@ -16,18 +16,19 @@ app.get('/',(req, res) => {
 
 
 app.post('/users', (req, res) => {
-    var user = new User({
-        username: req.query.username,
-        password: req.query.password
-    });
+        var username = req.query.username;
+        var password = req.query.password;
 
-    console.log(JSON.stringify(user));
 
-    user.findOne(user).then((doc) => {
-        res.send(doc);
-    }, (e) => {
-        res.status(404).send(e);
-    });
+        User.findOne({
+            "username" : username,
+            "password" : password
+        }).then((user) => {
+            if(!user){ 
+                return res.status(404).send();
+            }
+            res.send({user});
+        }).catch((e) => res.status(400).send());
 });
 
 app.listen(port, () => {
