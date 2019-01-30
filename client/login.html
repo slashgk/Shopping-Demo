@@ -30,13 +30,18 @@
     var password = document.getElementById("pwd").value;
     var url = `https://safe-shelf-85327.herokuapp.com/users?username=${username}&password=${password}`;
 
-    fetch(url, {
-                method: 'POST',
-            }).then((res) => res.json())
-    .then((data) =>  console.log(data))
-    .catch((err)=>console.log(err));
     alert('done');
-}
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        alert('done');
+    }
+    };
+    xhttp.open("POST", url, true);
+    xhttp.send();
+    alert('done');
+  }
 
 </script>
 </body>
