@@ -8,16 +8,6 @@ var {User} = require('./models/user');
 
 var app = express();
 
-
-
-app.get('/',(req, res) => {
-    res.sendfile('client/login.html');
-});
-
-app.post('/', (req,res) => {
-    res.send('Hello');
-});
-
 app.post('/users', (req, res) => {
         var username = req.query.username;
         var password = req.query.password;
