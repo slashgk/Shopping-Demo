@@ -8,7 +8,7 @@ var {User} = require('./models/user');
 
 var app = express();
 
-app.post('/users', (req, res) => {
+app.get('/users', (req, res) => {
         var username = req.query.username;
         var password = req.query.password;
 
