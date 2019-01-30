@@ -8,6 +8,10 @@ var {User} = require('./models/user');
 
 var app = express();
 
+app.get('/',(req, res) => {
+    res.sendFile(__dirname+"/login.html");
+});
+
 app.get('/users', (req, res) => {
         var username = req.query.username;
         var password = req.query.password;
