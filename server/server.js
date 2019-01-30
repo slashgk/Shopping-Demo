@@ -23,10 +23,10 @@ app.post('/users', (req, res) => {
 
     console.log(JSON.stringify(user));
 
-    user.save().then((doc) => {
+    user.findOne(user).then((doc) => {
         res.send(doc);
     }, (e) => {
-        res.status(400).send(e);
+        res.status(404).send(e);
     });
 });
 

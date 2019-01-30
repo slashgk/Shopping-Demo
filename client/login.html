@@ -35,6 +35,9 @@
     if (this.readyState == 4 && this.status == 200) {
         alert('done');
     }
+    else{
+      alert('Wrong credentials');
+    }
     };
     xhttp.open("POST", url, true);
     xhttp.send();
