@@ -58,6 +58,27 @@ app.get('/getProduct', (req, res) => {
     }).catch((e) => res.status(400).send());
 });
 
+app.post('/getSubcategory', (req, res) => {
+
+    var subcategory = new Subcategory(req.body);
+
+    subcategory.save().then((doc) => {
+        res.send(doc);
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
+app.post('/getProduct', (req, res) => {
+    var product = new Product(req.body);
+
+    product.save().then((doc) => {
+        res.send(doc);
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
 app.listen(port, () => {
     console.log(`Started up at port ${port}`);
 });
